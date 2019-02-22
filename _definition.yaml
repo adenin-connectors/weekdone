@@ -1,7 +1,6 @@
 ConnectorTitle: Weekdone
 AccessCodeServiceEndpoint: https://weekdone.com/oauth_authorize
 AccessTokenServiceEndpoint: https://weekdone.com/oauth_token
-ApiEndPoint: https://api.weekdone.com/1/
 UserName: hide
 UserPassword: hide
 ClientId: required
@@ -25,6 +24,3 @@ Custom2Hint: ''
 Custom3Label: Custom Field 3
 Custom3Hint: ''
 Scopes:
-- ScopeName: api
-  ScopeDescription: API Access
-  IsDefault: false
