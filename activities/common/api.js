@@ -49,7 +49,7 @@ api.convertResponse = function (response) {
   // iterate through each issue and extract id, title, etc. into a new array
   for (let i = 0; i < teams.length; i++) {
     let raw = teams[i];
-    let item = { id: raw.id, title: raw.name, description: 'privacy' + raw.privacy, link: raw.external_reports, raw: raw }
+    let item = { id: raw.id, title: raw.name, description: 'privacy' + raw.privacy, link: `https://weekdone.com/team/${raw.id}`, raw: raw }
     items.push(item);
   }
 
