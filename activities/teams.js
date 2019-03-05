@@ -6,20 +6,28 @@ const api = require('./common/api');
 module.exports = async function (activity) {
 
   try {
-
     api.initialize(activity);
-
     const response = await api('/teams');
 
     if (!cfActivity.isResponseOk(activity, response)) {
       return;
     }
 
-    // convert response to items[]
-    activity.Response.Data = api.convertResponse(response);
-
+    activity.Response.Data = convertResponse(response);
   } catch (error) {
-
-    cfActivity.handleError(error, activity);
+    cfActivity.handleError(activity, error);
   }
 };
+//**maps response data to items */
+function convertResponse(response) {
+  let items = [];
+  let teams = response.body.teams;
+
+  for (let i = 0; i < teams.length; i++) {
+    let raw = teams[i];
+    let item = { id: raw.id, title: raw.name, description: 'privacy' + raw.privacy, link: `https://weekdone.com/team/${raw.id}`, raw: raw }
+    items.push(item);
+  }
+
+  return { items: items };
+}
